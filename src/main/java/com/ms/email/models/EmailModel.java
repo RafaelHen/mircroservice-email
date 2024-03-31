@@ -1,10 +1,11 @@
-package models;
+package com.ms.email.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import enums.StatusEmail;
+import com.ms.email.enums.StatusEmail;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

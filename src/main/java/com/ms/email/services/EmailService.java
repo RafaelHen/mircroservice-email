@@ -1,4 +1,4 @@
-package services;
+package com.ms.email.services;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -12,20 +12,23 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import enums.StatusEmail;
+import com.ms.email.enums.StatusEmail;
+import com.ms.email.models.EmailModel;
+import com.ms.email.repositories.EmailRepository;
+
 import jakarta.transaction.Transactional;
-import models.EmailModel;
-import repositories.EmailRepository;
 
 @Service
 public class EmailService {
+	
 	@Autowired
     EmailRepository emailRepository;
 
     @Autowired
     private JavaMailSender emailSender;
 
-    @Transactional
+    @SuppressWarnings("finally")
+	@Transactional
     public EmailModel sendEmail(EmailModel emailModel) {
         emailModel.setSendDateEmail(LocalDateTime.now());
         try{
